@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head> 
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+        <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+    <div id="d_Top">
+        <span id="student_id">학번:202327038</span> <span id="student_name">이름:김도현</span>
+    </div>
+        
+    <div class="container">
+        <div class="inner-container">
+            <div id="d_Left">
+                <button id="b1" class="button">버튼 1</button>
+                <button id="b2" class="button">버튼 2</button>
+            </div>
+            
+            <div id="d_Right" style="justify-content: center; align-items: center; text-align: center; font-size: 40px;">
+                빈화면
+                
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById("b1").addEventListener("click", function() {
+    var dRight = document.getElementById("d_Right");
+    dRight.style.justifyContent = "center"; 
+    dRight.style.alignItems = "center"; 
+    dRight.style.textAlign = "center"; 
+
+    dRight.innerHTML = ''; 
+
+    var canvas = document.createElement("canvas");
+    canvas.width = 400; 
+    canvas.height = 400;
+    var ctx = canvas.getContext("2d");
+
+    ctx.beginPath();
+    ctx.arc(200, 200, 200, 0, 2 * Math.PI); 
+    ctx.fillStyle = "red"; 
+    ctx.fill();
+                
+    dRight.appendChild(canvas);
+});
+
+
+        document.getElementById("b2").addEventListener("click", function() {
+            var dRight = document.getElementById("d_Right");
+            dRight.style.justifyContent = "flex-start"; 
+            dRight.style.alignItems = "flex-start"; 
+            dRight.style.textAlign = "left"; 
+
+            dRight.innerHTML = ''; 
+
+            var gameScreenshot = document.createElement("img");
+            gameScreenshot.src = "https://ifh.cc/g/HxHCwQ.jpg";
+            gameScreenshot.style.width = "800px";
+            gameScreenshot.style.height = "550px";
+            gameScreenshot.style.marginRight = "10px"; 
+            gameScreenshot.style.maxWidth = "none";
+            dRight.appendChild(gameScreenshot);
+
+            var gameDescriptionList = document.createElement("ul");
+            gameDescriptionList.classList.add("game-description");
+                
+            var gameDescriptionItems = [
+                "게임이름: 전략적 팀 전투",
+                "출시년도: 2019년 6월 26일",
+                "장르: 전략 비디오 게임",
+                "좋아하는 이유: 매 시즌마다 캐릭터나 아이템이 바뀌어서 오래해도 지루하지 않고 운좋게 캐릭터가 잘붙거나 확률이 낮은게 나왔을때의 도파민에 중독이 될수 있다",
+            ];
+            gameDescriptionItems.forEach(function(itemText) {
+                var listItem = document.createElement("li");
+                listItem.textContent = itemText;
+                gameDescriptionList.appendChild(listItem);
+            });
+            dRight.appendChild(gameDescriptionList);
+        });
+    </script>
+</body>
+</html>
